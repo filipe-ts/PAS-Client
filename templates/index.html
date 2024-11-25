@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Filmes Mais Bem Avaliados</h1>
+    <ul>
+        {% for item in data %}
+        <li>
+            <a href="/movie?name={{ item.title }}">
+                <h3>{{ item.title }}</h3>
+                <img src="{{ item.poster_url }}" alt="{{ item.title }} Poster" />
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
