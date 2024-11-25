@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes dos Filmes</title>
+</head>
+
+<body>
+    <h1>Filmes Encontrados</h1>
+
+    {% if data %}
+    <div>
+        {% for movie in data %}
+        <div style="margin-bottom: 20px;">
+            <h2>{{ movie.title }}</h2>
+            <img src="{{ movie.poster_url }}" alt="Poster do Filme" style="width: 200px; height: auto;">
+            <p><strong>Resumo:</strong> {{ movie.overview }}</p>
+            <p><strong>Avaliação:</strong> {{ movie.vote_average }} ({{ movie.vote_count }} votos)</p>
+            <p><strong>Data de Lançamento:</strong> {{ movie.release_date }}</p>
+            <img src="{{ movie.backdrop_url }}" alt="Cenário do Filme" style="width: 100%; height: auto;">
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Nenhum filme encontrado ou erro na resposta da API.</p>
+    {% endif %}
+</body>
+
+</html>

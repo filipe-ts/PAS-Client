@@ -1,0 +1,103 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+/* Lista de itens */
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* Aumenta a largura mínima das colunas */
+    gap: 30px;
+    /* Aumenta o espaçamento entre os itens */
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Item de catálogo */
+li {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do poster */
+img {
+    width: 100%;
+    height: 100%;
+    /* Ajusta a altura para preencher completamente o contêiner */
+    object-fit: cover;
+    /* Faz a imagem cobrir completamente o contêiner, sem distorcer */
+    object-position: center;
+    /* Centraliza a imagem */
+    border-bottom: 4px solid #ddd;
+}
+
+/* Título do item */
+h3 {
+    font-size: 34px;
+    /* Aumenta o tamanho da fonte do título */
+    font-weight: normal;  /* Removendo o negrito */
+    padding: 20px;
+    background-color: #2c3e50;
+    color: #fff;  /* Trocando a cor do texto para branco */
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    ul {
+        grid-template-columns: 1fr;
+        /* Para telas pequenas, exibe um item por linha */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+}
