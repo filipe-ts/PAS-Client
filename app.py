@@ -23,13 +23,13 @@ def index():
 
 @app.route('/movie', methods=['GET'])
 def movie():
-    movie_name = request.args.get('name')  # Obtém o nome do filme da URL
+    movie_id = request.args.get('id')  # Obtém o nome do filme da URL
     
-    if not movie_name:
+    if not movie_id:
         return jsonify({"error": "Nome do filme é necessário"}), 400  # Se o nome não for fornecido
     
     try:
-        response = requests.get(f"{BACKEND_API_URL}/movies/search/{movie_name}")
+        response = requests.get(f"{BACKEND_API_URL}/movies/search/{movie_id}")
         
         if response.status_code == 200:
             data = response.json()  # Dados retornados pela API do backend
