@@ -6,9 +6,9 @@
     <ul>
         {% for item in data %}
         <li>
-            <a href="/movie?name={{ item.title }}">
+            <a href="/movie?id={{ item.id }}">
                 <h3>{{ item.title }}</h3>
-                <img src="{{ item.poster_url }}" alt="{{ item.title }} Poster" />
+                <img src="{{ item.poster_url }}" alt="{{ item.id }} Poster" />
             </a>
         </li>
         {% endfor %}

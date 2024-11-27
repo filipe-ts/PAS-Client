@@ -3,27 +3,120 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes dos Filmes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme</title>
+    <style>
+        /* Estilização global */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1e272e, #485460);
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin: 20px 0;
+            font-size: 2.5rem;
+        }
+
+        .movie-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #2f3640;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .movie-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .movie-poster {
+            flex-shrink: 0;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .movie-details {
+            flex-grow: 1;
+        }
+
+        .movie-details h2 {
+            color: #ffdd59;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .movie-details p {
+            margin: 5px 0;
+            color: #dcdde1;
+        }
+
+        .movie-details strong {
+            color: #00a8ff;
+        }
+
+        .movie-backdrop {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .no-data {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #dcdde1;
+            margin-top: 50px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .movie-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie-poster {
+                width: 150px;
+            }
+
+            .movie-details h2 {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Filmes Encontrados</h1>
+    <h1>Detalhes do Filme</h1>
 
     {% if data %}
-    <div>
-        {% for movie in data %}
-        <div style="margin-bottom: 20px;">
-            <h2>{{ movie.title }}</h2>
-            <img src="{{ movie.poster_url }}" alt="Poster do Filme" style="width: 200px; height: auto;">
-            <p><strong>Resumo:</strong> {{ movie.overview }}</p>
-            <p><strong>Avaliação:</strong> {{ movie.vote_average }} ({{ movie.vote_count }} votos)</p>
-            <p><strong>Data de Lançamento:</strong> {{ movie.release_date }}</p>
-            <img src="{{ movie.backdrop_url }}" alt="Cenário do Filme" style="width: 100%; height: auto;">
+    <div class="movie-container">
+        <div class="movie-header">
+            <img src="{{ data.poster_url }}" alt="Poster do Filme" class="movie-poster">
+            <div class="movie-details">
+                <h2>{{ data.title }}</h2>
+                <p><strong>Resumo:</strong> {{ data.overview }}</p>
+                <p><strong>Avaliação:</strong> {{ data.vote_average }} ({{ data.vote_count }} votos)</p>
+                <p><strong>Data de Lançamento:</strong> {{ data.release_date }}</p>
+            </div>
         </div>
-        {% endfor %}
+        <img src="{{ data.backdrop_url }}" alt="Cenário do Filme" class="movie-backdrop">
     </div>
     {% else %}
-    <p>Nenhum filme encontrado ou erro na resposta da API.</p>
+    <p class="no-data">Nenhum filme encontrado ou erro na resposta da API.</p>
     {% endif %}
 </body>
 
