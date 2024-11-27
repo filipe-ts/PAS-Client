@@ -9,6 +9,33 @@
 </head>
 
 <body>
+     <script>
+        function adjustFontSize() {
+            const anchors = document.querySelectorAll('a');
+            const textMeasure = document.getElementById('text-measure');
+            anchors.forEach(anchor => {
+                const heading = anchor.querySelector('h3');
+                textMeasure.style.fontSize = window.getComputedStyle(heading).fontSize;
+                textMeasure.textContent = heading.textContent;
+
+                let parentWidth = anchor.offsetWidth;
+                let textWidth = textMeasure.offsetWidth;
+                let fontSize = parseFloat(window.getComputedStyle(heading).fontSize);
+                console.log(`Textwidth: ${textWidth}`)
+                console.log(`Parent Width: ${parentWidth}`)
+                while (textWidth > parentWidth && fontSize > 0.5) {
+                    fontSize -= 0.05;
+                    textMeasure.style.fontSize = fontSize + 'em';
+                    textWidth = textMeasure.offsetWidth;
+                }
+
+                heading.style.fontSize = fontSize + 'em';
+            });
+        }
+
+        window.addEventListener('resize', adjustFontSize);
+        document.addEventListener('DOMContentLoaded', adjustFontSize);
+    </script>
     {% block content %}
     <!-- Conteúdo das páginas será renderizado aqui -->
     {% endblock %}

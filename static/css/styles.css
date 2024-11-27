@@ -1,4 +1,9 @@
 /* Reset básico */
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +13,12 @@
 /* Corpo da página */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    background: linear-gradient(to bottom, #1e272e, #1a1e23);
+    color: #1e272e;
     line-height: 1.6;
     padding: 20px;
+    height: 100%;
+    overflow: auto;
 }
 
 /* Container principal */
@@ -26,7 +33,7 @@ h1 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 40px;
-    color: #2c3e50;
+    color: white;
 }
 
 /* Lista de itens */
@@ -53,22 +60,27 @@ li:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
 
 /* Imagem do poster */
 img {
-    width: 100%;
+    /*width: 100%;*/
     height: 100%;
     /* Ajusta a altura para preencher completamente o contêiner */
     object-fit: cover;
     /* Faz a imagem cobrir completamente o contêiner, sem distorcer */
     object-position: center;
     /* Centraliza a imagem */
-    border-bottom: 4px solid #ddd;
+    /*border-bottom: 4px solid #ddd;*/
 }
 
 /* Título do item */
 h3 {
-    font-size: 34px;
     /* Aumenta o tamanho da fonte do título */
     font-weight: normal;  /* Removendo o negrito */
     padding: 20px;
@@ -76,8 +88,17 @@ h3 {
     color: #fff;  /* Trocando a cor do texto para branco */
     text-align: center;
     margin-bottom: 0;
+
+    /*display: inline-block;*/
+    /*font-size: min(2em, 1.5vw); !* Adjust this to suit your layout *!*/
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    max-width: 100%; /* Adjust the width as needed */
+
 }
 
+#text-measure { position: absolute; visibility: hidden; white-space: nowrap; }
 
 
 /* Media Queries para Responsividade */
